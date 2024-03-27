@@ -1,0 +1,28 @@
+# Nest (backend)
+back/node_modules/
+back/dist/
+back/*.env
+back/src/pdfs
+
+# Angular (web)
+front/node_modules
+front/node_modules/
+front/dist/
+front/e2e/
+front/.vscode/
+front/.angular/
+front/environments
+
+
+
+
+# IDE
+.idea
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
