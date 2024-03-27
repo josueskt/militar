@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>estante</th>
+        <th>ver seciones del estante </th>
+    </tr>
+    <tr>
+        @for (item of estantes_lista; track $index) {
+           <th>
+            {{item.nombre}}
+           </th> 
+           <th>
+            <button (click)="secion(item.id_estante)">seciones</button>
+           </th>
+        }
+    </tr>
+</table>

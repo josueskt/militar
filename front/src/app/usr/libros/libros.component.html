@@ -1,0 +1,4 @@
+@for (item of libros; track item.id_libro) {
+    <p>{{item.titulo}}</p> 
+    <button (click)="libro(item.id_libro)">ver-></button>
+}

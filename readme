@@ -1,0 +1,7 @@
+estados de tramite state 
+activo
+pendiente
+finalizado
+INSERT INTO tramites.estate (nombre) VALUES ('activo')
+INSERT INTO tramites.estate (nombre) VALUES ('pendiente')
+INSERT INTO tramites.estate (nombre) VALUES ('finalizado');
