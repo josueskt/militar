@@ -1,1 +1,21 @@
 <p>notificaciones works!</p>
+
+<table>
+   <tr>
+    <th>
+        notificacion 
+    </th>
+    <th>libro </th>
+    <th>eliminar</th>
+   </tr>
+   @for (item of notificaciones; track $index) {
+       <tr>
+
+    <td>{{item.mensaje}}</td>
+    <td>codigo de libro : {{item.codigo}}</td>
+    <td>
+        <button class="bg-red-500" (click)="eliminar(item.id_notifi)">eliminar</button>
+    </td>
+        </tr>
+   }
+</table>

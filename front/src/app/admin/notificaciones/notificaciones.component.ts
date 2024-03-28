@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { NotificacionesService } from './notificaciones.service';
 
 @Component({
   selector: 'app-notificaciones',
@@ -7,6 +8,26 @@ import { Component } from '@angular/core';
   templateUrl: './notificaciones.component.html',
   styleUrl: './notificaciones.component.css'
 })
-export class NotificacionesComponent {
+export class NotificacionesComponent implements OnInit {
+  private notificacion_S = inject(NotificacionesService)
+  notificaciones!:{mensaje:string,codigo:string,id_notifi:string}[]
+
+ngOnInit(): void {
+  
+this.notificar()
+}
+
+notificar(){
+  this.notificacion_S.traernotifi().subscribe((e)=>{
+    this.notificaciones = e
+    console.log(this.notificaciones)
+  })
+}
+eliminar(id:string){
+
+  this.notificacion_S.eliminar_notifi(id).subscribe((e:any)=>{
+    alert(e.message[0])
+  })
+}
 
 }

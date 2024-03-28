@@ -5,7 +5,7 @@ import { LibroComponent } from './libro/libro.component';
 import { EstantesComponent } from './estantes/estantes.component';
 import { SeccionComponent } from './seccion/seccion.component';
 
-export const routesUsr: Routes = [
+export const routesAdmin: Routes = [
     { path: 'home', component: HomeComponent},
 {path:'libros',component:LibrosComponent},
 {path:'libro/:id',component:LibroComponent},
