@@ -1,0 +1,30 @@
+<div>
+    <h1>libros sin asignar </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>
+codigo
+                </th>
+                <th>
+                    aciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of libros_sin_asignar; track $index) {
+
+    <tr>
+        <td>{{item.codigo}}</td>
+        <td>
+            <button (click)="cambiarEstado(item.id_libro)">
+              {{ estados[item.id_libro] || '+' }}
+            </button>
+          </td>
+    
+    </tr>
+            } 
+        </tbody>
+    </table>
+   
+</div>

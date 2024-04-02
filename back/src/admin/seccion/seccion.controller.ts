@@ -38,7 +38,7 @@ return this.seccionS.eliminar(id)        //toca ahcer un uodate a todos los libr
     }
     @Post()
     crear_secion(@Body('seccion') seccion: Seccion) {
-        console.log(seccion.fk_estante)
+    
         return this.seccionS.crear_seccion(seccion)
     }
 

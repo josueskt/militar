@@ -1,1 +1,37 @@
-<p>estantesadmin works!</p>
+<form [formGroup]="estante" (ngSubmit)="crear()">
+    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">First name</label>
+    <input formControlName="nombre"  autocomplete="off"type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="buscador"  />
+  <button>crear </button>
+  </form>
+<div>
+    
+    <table class="table-fixed  border-separate ">
+        <thead>
+            <tr>
+                <th>
+                    nombre del estante
+                </th>
+                <th>
+                    eliminar
+                </th>
+            </tr>
+        </thead>
+       <tbody>
+        @for (item of lista_estante; track $index) {
+
+            <tr>
+                <td>
+                    <p>{{item.nombre}}</p>
+                </td>
+                <td>
+                    <button class="" (click)="eliminar_estante(item.id_estante)">eliminar</button>
+                </td>
+                <td><a href='admin/secciones/{{item.id_estante}}'>ver seciones del estante</a></td>
+            </tr>
+        }
+       </tbody>
+      
+        </table>
+</div>
+
+
