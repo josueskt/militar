@@ -22,13 +22,15 @@ export class SecionesadminComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.seccion =  this.fb.group({nombre:[''],fk_estante:[this.id]})
-      this.traer_seciones(this.id)
+      
     });
+    this.seccion =  this.fb.group({nombre:[''],fk_estante:[this.id]})
+      this.traer_seciones(this.id)
   }
   traer_seciones(id: string): void {
     this.secions_s.taer_seciones_estante(id).subscribe((r:any) => {
       this.secciones = r;
+      console.log(r)
     });
   }
   crear(){

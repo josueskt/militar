@@ -15,6 +15,7 @@ try{
     }catch(error){ return new MessageDto(error)
 }
     }
+    
 
 async l_s_u(){
 
@@ -25,14 +26,17 @@ async t_c_e(id:string){
 }
 async l_s_l(id:string){
 
-    return await this.sql.query('SELECT * FROM item.book WHERE fk_seccion = $1',[id])
+    return await this.sql.query('SELECT codigo , id_libro FROM item.book WHERE fk_seccion = $1',[id])
 }
 
 async editar(seccion){
 
 seccion.nombre
 seccion.id_seccion
-this.sql.query('UPDATE item.seccion SET nombre =$1,fk_estante =$2 WHERE id_seccion = $3',[seccion.nombre,seccion.fk_estante,seccion.id_seccion])
+if(seccion.nombre){
+
+    this.sql.query('UPDATE item.seccion SET nombre =$1 WHERE id_seccion = $3',[seccion.nombre,seccion.id_seccion])
+}
 if(seccion.eliminados){
   await  this.elm_l(seccion.eliminados)
 }
@@ -45,12 +49,13 @@ return new MessageDto("actualizado exitosamente")
 
 }
 
-async elm_l(seccion:[{"id_libro":string}]){
+async elm_l(seccion:string[]){
     
 
     for(const eliminados of seccion){
 
-  await  this.sql.query('UPDATE item.book SET fk_seccion= NULL WHERE id_libro =$1',[eliminados.id_libro])
+        
+  await  this.sql.query('UPDATE item.book SET fk_seccion= NULL WHERE id_libro =$1',[eliminados])
        
        
     
@@ -58,13 +63,14 @@ async elm_l(seccion:[{"id_libro":string}]){
 
 
 }
-async c_l_S(agregados:[{"id_libro":string}],id:string){
+async c_l_S(agregados:string[],id:string){
 
 
 for(const agregado of agregados){
 
-  await  this.sql.query('UPDATE item.book SET fk_seccion=$1 WHERE id_libro =$2',[id,agregado.id_libro])
-   console.log('agre')
+   
+  await  this.sql.query('UPDATE item.book SET fk_seccion=$1 WHERE id_libro =$2',[id,agregado])
+   
 
 }
 

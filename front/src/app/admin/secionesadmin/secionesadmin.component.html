@@ -19,7 +19,7 @@
         @for (item of secciones; track $index) {
             <tr>
                 <td>{{item.nombre}}</td>
-                <td><a href='admin/secion/{{item.id_seccion}}'> editar</a></td>
+                <td><a href='admin/seccion/{{item.id_seccion}}'> editar</a></td>
                 <td><button (click)="elimiar(item.id_seccion)">eliminar</button></td>
 
             </tr>

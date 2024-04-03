@@ -14,6 +14,7 @@ export class BuscadorService {
   }
   async buscador(busado: string, seccion: string) {
     let res = []
+    console.log(seccion)
     if (seccion) {
       res = await this.sql.query('select titulo , id_libro FROM item.book WHERE fk_seccion = $1', [seccion])
 
