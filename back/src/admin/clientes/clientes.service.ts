@@ -18,14 +18,15 @@ return res
  }
 
  async crear_cliente(cliente:Cliente){
+    console.log(cliente)
 
 try{
 
     await this.sql.query(`INSERT INTO users.clientes(cedula,nombres,email,direction,calle_principal,calle_secundaria,numero_casa,telefono) values($1,$2,$3,$4,$5,$6,$7,$8)`,[cliente.cedula,cliente.nombres,cliente.email,cliente.direction,cliente.calle_principal,cliente.calle_secundaria,cliente.numero_casa,cliente.telefono])
 
     return new MessageDto("creado exitosamente");
-}catch{
-    return error
+}catch(error){
+    return new MessageDto("erro no se pudo crear"+error);
 }
 
  }

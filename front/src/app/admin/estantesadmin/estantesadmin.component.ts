@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { EstantesadminService } from './estantesadmin.service';
-
+import QRCode from 'qrcode';
 @Component({
   selector: 'app-estantesadmin',
   standalone: true,
@@ -14,6 +14,23 @@ private estante_S = inject(EstantesadminService)
 estante!:FormGroup
 lista_estante!:{nombre:string,id_estante:string}[]
 private fb = inject(FormBuilder)
+url = window.location.origin + '/';
+
+
+
+
+enlace: string = this.url;
+
+  qrCodeUrl: string = '';
+
+
+  async generateQRCode(id:string) {
+    try {
+      this.qrCodeUrl = await QRCode.toDataURL(`${this.enlace}seccion/${id}`);
+    } catch (err) {
+      console.error('Error generando código QR:', err);
+    }
+  }
 
   ngOnInit(): void {
     this.estante =  this.fb.group({nombre:['']})

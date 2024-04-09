@@ -1,0 +1,1 @@
+export interface libro_devolicion { codigo: string, cedula: string, id_libro: string, id_prestamo: string, titulo: string, nombres: string }

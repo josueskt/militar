@@ -1,11 +1,22 @@
-
-
-titulo {{libro.titulo}}
-año de publicacion {{libro.year_of_publ}}
-ISBN{{libro.isbn}}
-
-
-<p>ubicacion</p>
-estante : {{libro.estante}}
-seccion :  {{libro.seccion}} 
-codigo :{{libro.codigo}}
+<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <div class="md:flex">
+      <div class="md:flex-shrink-0">
+        <!-- <img class="h-48 w-full object-cover md:w-48" src="imagen_de_portada.jpg" alt="Imagen de Portada"> -->
+      </div>
+      <div class="p-8">
+        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ libro.titulo }}</div>
+        <p class="mt-2 text-gray-500">{{ libro.year_of_publ }}</p>
+        <p class="mt-2 text-gray-500">{{ libro.isbn }}</p>
+        
+        <div class="mt-4">
+          <p class="text-gray-600">Ubicación:</p>
+          <ul class="mt-2 text-gray-500">
+            <li>Estante: {{ libro.estante }}</li>
+            <li>Sección: {{ libro.seccion }}</li>
+            <li>Código: {{ libro.codigo }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  

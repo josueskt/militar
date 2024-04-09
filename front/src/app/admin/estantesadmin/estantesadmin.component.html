@@ -27,11 +27,19 @@
                     <button class="" (click)="eliminar_estante(item.id_estante)">eliminar</button>
                 </td>
                 <td><a href='admin/secciones/{{item.id_estante}}'>ver seciones del estante</a></td>
+                <td>
+                    <button (click)="generateQRCode(item.id_estante);">generar qr </button>
+                </td>
             </tr>
         }
        </tbody>
       
         </table>
+
+
+        @if(qrCodeUrl){<div >
+            <img width="400px" [src]="qrCodeUrl" alt="Código QR">
+          </div>}
 </div>
 
 

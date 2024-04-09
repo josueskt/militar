@@ -15,8 +15,7 @@ cliente_by_id(@Param('id') id:string){
 }
 @Post()
 crear_cliente(@Body('cliente')cliente:Cliente){
-
-    return this.clientesS.crear_cliente(cliente[0])
+   return this.clientesS.crear_cliente(cliente)
 
 
 

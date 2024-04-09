@@ -12,25 +12,27 @@ export class BuscadorService {
   async secion(id_estante: string) {
     return await this.sql.query('select * FROM item.seccion where fk_estante = $1', [id_estante])
   }
-  async buscador(busado: string, seccion: string) {
+  async buscador(busado: string, seccion: string,pagina:number) {
+    const pageNumber = pagina; 
+    const pageSize = 20; 
+    const offset = (pageNumber - 1) * pageSize;
     let res = []
-    console.log(seccion)
     if (seccion) {
-      res = await this.sql.query('select titulo , id_libro FROM item.book WHERE fk_seccion = $1', [seccion])
+      res = await this.sql.query('select titulo , id_libro FROM item.book WHERE fk_seccion = $1 LIMIT $2 OFFSET $3 ', [seccion,pageSize, offset])
 
     }
 
     if (!res[0]) {
-      res = await this.sql.query('select titulo , id_libro FROM item.book WHERE LOWER(codigo) = LOWER($1)', [busado])
+      res = await this.sql.query('select titulo , id_libro FROM item.book WHERE LOWER(codigo) = LOWER($1) LIMIT $2 OFFSET $3', [busado,pageSize, offset])
     }
 
     if (!res[0]) {
 
-      res = await this.sql.query('select titulo , id_libro FROM item.book WHERE LOWER(isbn) = LOWER($1)', [busado])
+      res = await this.sql.query('select titulo , id_libro FROM item.book WHERE LOWER(isbn) = LOWER($1) LIMIT $2 OFFSET $3', [busado,pageSize, offset])
 
     }
     if (!res[0]) {
-      res = await this.sql.query('select titulo , id_libro FROM item.book WHERE LOWER(titulo) LIKE LOWER($1)', [`%${busado}%`])
+      res = await this.sql.query('select titulo , id_libro FROM item.book WHERE LOWER(titulo) LIKE LOWER($1) LIMIT $2 OFFSET $3', [`%${busado}%`,pageSize, offset])
 
     }
 

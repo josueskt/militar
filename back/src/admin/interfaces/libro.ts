@@ -3,9 +3,12 @@ id_libro?:number
 titulo:string
 year_of_publ:Date
 isbn:string
+tomo:string
 codigo:string
 cantidad:number
-fk_type:number
+tipo:string
 fk_seccion:number
-fk_categoria:number
+categoria:string
+editorial:string
+autor:string
 }

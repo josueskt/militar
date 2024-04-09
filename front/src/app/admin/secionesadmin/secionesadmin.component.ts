@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SecionesadminService } from './secionesadmin.service';
 import { secciones } from '../../interface/secciones.interface';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import QRCode from 'qrcode';
 
 @Component({
   selector: 'app-secionesadmin',
@@ -27,6 +28,27 @@ export class SecionesadminComponent implements OnInit {
     this.seccion =  this.fb.group({nombre:[''],fk_estante:[this.id]})
       this.traer_seciones(this.id)
   }
+
+
+  url = window.location.origin + '/';
+
+
+
+
+  enlace: string = this.url;
+  
+    qrCodeUrl: string = '';
+  
+  
+    async generateQRCode(id:string) {
+      try {
+        this.qrCodeUrl = await QRCode.toDataURL(`${this.enlace}libros?seccion=${id}`);
+      } catch (err) {
+        console.error('Error generando código QR:', err);
+      }
+    }
+
+
   traer_seciones(id: string): void {
     this.secions_s.taer_seciones_estante(id).subscribe((r:any) => {
       this.secciones = r;

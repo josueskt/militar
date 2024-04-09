@@ -1,4 +1,6 @@
 export interface libro {
+    id_libro:string
+    cantidad:number
     categoria:string
     codigo:string
     estante:string

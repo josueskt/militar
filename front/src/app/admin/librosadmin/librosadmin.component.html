@@ -1,1 +1,59 @@
-<p>librosadmin works!</p>
+<div>
+    <h1> cargar libros desde exel </h1>
+    <input type="file" class="form-control" (change)="handleFileInput($event)" />
+</div>
+<button class="btn btn-primary" (click)="procesarArchivo()" [disabled]="!archivoSeleccionado">Procesar Archivo</button>
+<hr>
+
+<br>
+<input [(ngModel)]="buscar_l" (keyup)="buscar()" type="text" placeholder="buscar libro">
+<div>
+    <p>lista de libros </p>
+<table>
+    <thead>
+<tr>
+    <th>
+        titulo
+    </th>
+    <th>
+        codigo
+    </th><th>
+        eliminar
+    </th>
+    <th>
+        editar
+    </th>
+    <th>
+        historial
+    </th>
+</tr>
+    </thead>
+    <tbody>
+        @for (item of libros; track $index) {
+   <tr>
+    <td>
+        {{item.titulo}}
+    </td>
+    <td>
+        {{item.codigo}}
+
+    </td>
+    <td>
+        <button (click)="eliminar(item.id_libro)">eliminar</button>
+    </td>
+    <td>
+        <button> editar</button>
+    </td>
+    <td>
+        <a href='admin/historial/{{item.id_libro}}'>ver historial de prestamo</a>
+    </td>
+   
+        }
+
+    </tbody>
+</table>
+
+<button (click)="atras()">atras</button>
+<button (click)="siguiente()">siguiente</button>
+
+</div>

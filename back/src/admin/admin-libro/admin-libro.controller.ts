@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { libro } from '../interfaces/libro';
 import { AdminLibroService } from './admin-libro.service';
 import { error } from 'console';
@@ -9,9 +9,8 @@ import { MessageDto } from 'src/commons/mmesage.dto';
 export class AdminLibroController {
 constructor(private libroS:AdminLibroService){}
 @Get()
-obtener_libros(){
-
-return this.libroS.traer_todos()    
+obtener_libros(@Query('pagina')pagina:number ,@Query('buscar')buscar:string){
+return this.libroS.traer_todos(pagina,buscar)    
 }
 @Get('/historial/:id')
 histroal_libros(@Param('id')id:string){
@@ -25,11 +24,11 @@ obtener_libro_id(@Param('id') id:string){
  async crear_libro(@Body('libros') libros:libro[] ){
 
 try{
-    for await (const libro of libros){
+  
 
-     this.libroS.crear(libro)
+     this.libroS.crear(libros)
        
-    }
+    
     return new MessageDto("creado exitosamente");
 }catch{
     return error
@@ -40,7 +39,7 @@ try{
 @Put(':id')
 editar_libro(@Param('id') id:string ,@Body('libro')libro:libro){
     
-    return this.libroS.editar(id,libro)
+   // return this.libroS.editar(id,libro)
     
 }
 @Delete(':id')

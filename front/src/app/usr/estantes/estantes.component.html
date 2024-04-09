@@ -1,16 +1,24 @@
-<table>
-    <tr>
-        <th>estante</th>
-        <th>ver seciones del estante </th>
-    </tr>
-    <tr>
+<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estante</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ver Secciones del Estante</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
         @for (item of estantes_lista; track $index) {
-           <th>
-            {{item.nombre}}
-           </th> 
-           <th>
-            <button (click)="secion(item.id_estante)">seciones</button>
-           </th>
-        }
-    </tr>
-</table>
+
+        <tr>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <div class="text-sm text-gray-900">{{ item.nombre }}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" (click)="secion(item.id_estante)">Secciones</button>
+          </td>     
+        </tr>
+    }
+      </tbody>
+    </table>
+  </div>
+  

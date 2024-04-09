@@ -1,0 +1,15 @@
+@for (item of historial; track $index) {
+    
+    <div class="my-4 bg-slate-800 rounded-lg border border-gray-400 p-4">
+        <h2 class="text-xl font-semibold text-white">{{item.titulo}}</h2>
+        <div class="mt-2">
+            <p class="text-sm text-gray-300">Fecha de préstamo: {{item.fecha_prestamo}}</p>
+            <p class="text-sm text-gray-300">Nombre: {{item.nombres}}</p>
+            <p class="text-sm text-gray-300">Cédula: {{item.cedula}}</p>
+            <p class="text-sm text-gray-300">Teléfono: {{item.telefono}}</p>
+        </div>
+    </div>
+    
+    
+
+}

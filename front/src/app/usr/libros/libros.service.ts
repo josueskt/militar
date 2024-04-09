@@ -12,11 +12,11 @@ export class LibrosService {
 
   constructor(private http: HttpClient) {}
 
-  traerResultados(buscar:string , seccion?:string): Observable<any> {
+  traerResultados(buscar:string,pagina:number , seccion?:string): Observable<any> {
     if(!seccion){
-    return this.http.get(`${this.baseUrl}?buscar=${buscar}`);}
+    return this.http.get(`${this.baseUrl}?buscar=${buscar}&pagina=${pagina}`);}
      else{
-      return this.http.get(`${this.baseUrl}?seccion=${seccion}`);
+      return this.http.get(`${this.baseUrl}?seccion=${seccion}&pagina=${pagina}`);
     }
   }
 }

@@ -1,4 +1,16 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 @for (item of libros; track item.id_libro) {
-    <p>{{item.titulo}}</p> 
-    <button (click)="libro(item.id_libro)">ver-></button>
-}
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">{{item.titulo}}</div>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block mt-2" (click)="libro(item.id_libro)">ver →</button>
+          </div>
+        </div>
+        
+    }
+</div>
+<br>
+<div class="flex justify-center space-x-4">
+    <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" (click)="atras()">Atrás</button>
+    <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded" (click)="siguiente()">Siguiente</button>
+</div>
