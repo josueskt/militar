@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auts/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +15,11 @@ export class HomeComponent implements OnInit {
 
   private fb = inject(FormBuilder)
   private router =inject(Router)
+ 
+
   ngOnInit(): void {
     this.buscador =  this.fb.group({buscar:['']})
+    
   }
 
   buscar(){

@@ -15,7 +15,9 @@ export class HistoriallibroComponent implements OnInit {
   id!:string
   private route = inject(ActivatedRoute)
   private historial_S = inject(HistorialService)
-  historial:{cedula:string,direction:string,nombres:string,titulo:string,fecha_prestamo:string,telefono:string}[] = []
+  historial:{
+observacion:string;cedula:string,direction:string,nombres:string,titulo:string,fecha_prestamo:string,telefono:string
+}[] = []
  
    ngOnInit(): void {
      this.route.params.subscribe(params => {

@@ -1,6 +1,6 @@
 <p>notificaciones works!</p>
 
-<table>
+<table class="w-auto border-separate rounded-sm border border-gray-200 m-auto">
    <tr>
     <th>
         notificacion 
@@ -9,13 +9,15 @@
     <th>eliminar</th>
    </tr>
    @for (item of notificaciones; track $index) {
-       <tr>
+    <tr class="bg-gray-700 text-white">
+        <td class="px-4 py-2">{{item.mensaje}}</td>
+        <td class="px-4 py-2">{{item.codigo}}</td>
+        <td class="px-4 py-2">
+            <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+                (click)="eliminar(item.id_notifi)">Eliminar</button>
+        </td>
+    </tr>
+    
 
-    <td>{{item.mensaje}}</td>
-    <td>codigo de libro : {{item.codigo}}</td>
-    <td>
-        <button class="bg-red-500" (click)="eliminar(item.id_notifi)">eliminar</button>
-    </td>
-        </tr>
    }
 </table>

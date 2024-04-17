@@ -1,13 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LoginController } from './usr/login/login.controller';
-import { RegisterController } from './usr/register/register.controller';
 
 import { NotificationController } from './admin/notification/notification.controller';
 import { LibrosController } from './usr/libros/libros.controller';
-import { LoginService } from './usr/login/login.service';
-import { RegisterService } from './usr/register/register.service';
 import { BuscadorController } from './usr/buscador/buscador.controller';
 import { BuscadorService } from './usr/buscador/buscador.service';
 import { ClientesController } from './admin/clientes/clientes.controller';
@@ -23,11 +19,15 @@ import { PrestamoService } from './admin/prestamo/prestamo.service';
 import { EstanteService } from './admin/estante/estante.service';
 import { NotificationService } from './admin/notification/notification.service';
 import { SeccionService } from './admin/seccion/seccion.service';
+import { LoginController } from './admin/login/login.controller';
+import { LoginService } from './admin/login/login.service';
+import { RegistroController } from './admin/registro/registro.controller';
+import { RegistroService } from './admin/registro/registro.service';
 
 
 @Module({
   imports: [],
-  controllers: [AppController, LoginController, RegisterController, LibrosController, PrestamoController, ClientesController, NotificationController, LibrosController, BuscadorController, ClientesController, AdminLibroController, EstanteController, SeccionController],
-  providers: [AppService, RegisterService, LibrosService, LoginService, RegisterService, BuscadorService, SqlService, AdminLibroService, ClientesService, PrestamoService, EstanteService, NotificationService, SeccionService],
+  controllers: [AppController, LoginController, LibrosController, PrestamoController, ClientesController, NotificationController, LibrosController, BuscadorController, ClientesController, AdminLibroController, EstanteController, SeccionController, RegistroController],
+  providers: [AppService,  LibrosService, LoginService,  BuscadorService, SqlService, AdminLibroService, ClientesService, PrestamoService, EstanteService, NotificationService, SeccionService, RegistroService],
 })
 export class AppModule {}

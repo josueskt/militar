@@ -40,8 +40,8 @@ return this.http.post(`${this.baseUrl}`,{seccion}  )
 
   // edicion de seccion
   
-  traer_libros_no_a(){
-    return this.http.get(`${this.baseUrl}/libros`)
+  traer_libros_no_a(buscador:string){
+    return this.http.get(`${this.baseUrl}/libros?buscar=${buscador}`)
   }
   traer_libros_asignados(id:string){
     return this.http.get(`${this.baseUrl}/${id}`)

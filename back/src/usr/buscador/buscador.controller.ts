@@ -1,10 +1,11 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import { Controller, Get, Inject, Param, Query } from '@nestjs/common';
 import { BuscadorService } from './buscador.service';
 
 
 @Controller('buscador')
 export class BuscadorController {
     constructor(private buscador_S: BuscadorService) { }
+    private auth = Inject()
 
     @Get()
     buscador(@Query('buscar') buscar: string, @Query('seccion') seccion: string, @Query('pagina') pagina: number) {

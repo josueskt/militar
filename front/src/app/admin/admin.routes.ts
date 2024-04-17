@@ -8,20 +8,43 @@ import { LibrosadminComponent } from "./librosadmin/librosadmin.component";
 import { DevolucionesComponent } from "./devoluciones/devoluciones.component";
 import { PrestamosComponent } from "./prestamos/prestamos.component";
 import { HistoriallibroComponent } from "./historiallibro/historiallibro.component";
+import { AuthGuard } from "../auts/auth.guard";
 
 export const routesUsr: Routes = [
 
-    {path:'admin',component:AdminComponent},
-{path:'admin/notificaciones',component:NotificacionesComponent},
-{path:'admin/estantes',component:EstantesadminComponent},
-{path:'admin/secciones/:id',component:SecionesadminComponent},
-{path:'admin/seccion/:id',component:EditarSeccionComponent},
-{path:'admin/libros',component:LibrosadminComponent},
-{path:'admin/devoluciones',component:DevolucionesComponent},
-{path:'admin/prestamo',component:PrestamosComponent},
-{
-    path:'admin/historial/:id',component:HistoriallibroComponent
-}
+    {
+        path: 'admin', component: AdminComponent, canActivate: [AuthGuard],
+        data: { roles: ['biblioteca'] },
+    },
+    {
+        path: 'admin/notificaciones', component: NotificacionesComponent, canActivate: [AuthGuard],
+        data: { roles: ['biblioteca'] }
+    },
+    {
+        path: 'admin/estantes', component: EstantesadminComponent, canActivate: [AuthGuard],
+        data: { roles: ['biblioteca'] }
+    },
+    {
+        path: 'admin/secciones/:id', component: SecionesadminComponent, canActivate: [AuthGuard],
+        data: { roles: ['biblioteca'] }
+    },
+    {
+        path: 'admin/seccion/:id', component: EditarSeccionComponent, canActivate: [AuthGuard],
+        data: { roles: ['biblioteca'] }
+    },
+    { path: 'admin/libros', component: LibrosadminComponent },
+    {
+        path: 'admin/devoluciones', component: DevolucionesComponent, canActivate: [AuthGuard],
+        data: { roles: ['biblioteca'] }
+    },
+    {
+        path: 'admin/prestamo', component: PrestamosComponent, canActivate: [AuthGuard],
+        data: { roles: ['biblioteca'] }
+    },
+    {
+        path: 'admin/historial/:id', component: HistoriallibroComponent, canActivate: [AuthGuard],
+        data: { roles: ['biblioteca'] }
+    }
 
 
 ]

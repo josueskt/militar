@@ -2,18 +2,19 @@ import { Component, OnInit, inject } from '@angular/core';
 import { SecionesadminComponent } from '../secionesadmin.component';
 import { SecionesadminService } from '../secionesadmin.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-editar-seccion',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,FormsModule],
   templateUrl: './editar-seccion.component.html',
   styleUrl: './editar-seccion.component.css'
 })
 export class EditarSeccionComponent implements OnInit {
   private route = inject(ActivatedRoute)
   private fb = inject(FormBuilder)
+  buscador = ''
 
   libros_sin_asignar:{id_libro:string,codigo:string}[] = []
   libros_asignados:{id_libro:string,codigo:string}[] = []
@@ -34,7 +35,7 @@ id!:string
       this.id = params['id'];
       
     });
-    this.trear_Libros_sin_asignar()
+    this.trear_Libros_sin_asignar(this.buscador)
     this.traer_libros_asignados(this.id)
   }
 
@@ -45,9 +46,9 @@ this.libros_asignados = e
 
     })
   }
-trear_Libros_sin_asignar(){
+trear_Libros_sin_asignar(buscador:string){
  
-  this.seccion_s.traer_libros_no_a().subscribe((e:any)=>{
+  this.seccion_s.traer_libros_no_a(buscador).subscribe((e:any)=>{
     this.libros_sin_asignar = e
     console.log(e)
   })

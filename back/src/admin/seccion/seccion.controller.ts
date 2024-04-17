@@ -1,26 +1,35 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, SetMetadata, UseGuards } from '@nestjs/common';
 import { SeccionService } from './seccion.service';
 import { Seccion } from '../interfaces/seccion';
+import { RolesGuard } from 'src/roles/roles.guard';
 
 @Controller('seccion')
 export class SeccionController {
 
     constructor(private seccionS: SeccionService) { }
     @Get('/libros')
-    traer_libros_sin_usar() {
-        return this.seccionS.l_s_u()
+    @UseGuards(RolesGuard)
+    @SetMetadata('roles', ['biblioteca'])
+    traer_libros_sin_usar(@Query('buscar')buscar:string) {
+        return this.seccionS.l_s_u(buscar)
 
     }
     @Get()
+    @UseGuards(RolesGuard)
+    @SetMetadata('roles', ['biblioteca'])
     todas_seciones_estante(@Query('estante') id: string) {
         return this.seccionS.t_c_e(id)
 
     }
     @Get(':id')
+    @UseGuards(RolesGuard)
+    @SetMetadata('roles', ['biblioteca'])
     traer_secion_y_libros(@Param('id') id: string) {
         return this.seccionS.l_s_l(id)
     }
     @Put()
+    @UseGuards(RolesGuard)
+    @SetMetadata('roles', ['biblioteca'])
     editar_seccion(@Body('seccion') seccion:{}) {
 
 
@@ -31,12 +40,16 @@ export class SeccionController {
         // los libros eliminados tienes que volver a ser null en su kf_seccion 
     }
     @Delete(':id')
+    @UseGuards(RolesGuard)
+    @SetMetadata('roles', ['biblioteca'])
     eliminar_secion(@Param('id')id:string) {
 
 return this.seccionS.eliminar(id)        //toca ahcer un uodate a todos los libros y luego eliminarlo :3 
 
     }
     @Post()
+    @UseGuards(RolesGuard)
+    @SetMetadata('roles', ['biblioteca'])
     crear_secion(@Body('seccion') seccion: Seccion) {
     
         return this.seccionS.crear_seccion(seccion)

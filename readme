@@ -3,3 +3,4 @@ activo
 pendiente
 finalizado
 INSERT INTO tramites.estate (nombre) VALUES ('activo'),('pendiente'),('finalizado');
+insert into users.rol(nombre)values('biblioteca')

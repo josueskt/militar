@@ -17,9 +17,9 @@ try{
     }
     
 
-async l_s_u(){
+async l_s_u(buscar:string){
 
-    return await this.sql.query('SELECT id_libro,codigo FROM item.book WHERE fk_seccion IS NULL')
+    return await this.sql.query('SELECT id_libro,codigo FROM item.book WHERE codigo LIKE $1 AND fk_seccion IS NULL LIMIT 30',[`%${buscar}%`])
 }
 async t_c_e(id:string){
     return await this.sql.query('SELECT * FROM item.seccion where fk_estante = $1',[id])

@@ -1,0 +1,26 @@
+<div class="flex justify-center items-center min-h-svh bg-blue-500   ">
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Credencial:</label>
+      <div class="mb-4">
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email" [(ngModel)]="username" required placeholder="Credencial">
+      </div>
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password:</label>
+      <div class="grid grid-cols-2">
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" [type]="showPassword ? 'text' : 'password'" id="password" name="password" [(ngModel)]="password" required>
+        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center col-span-1 w-12" (click)="showHidePassword()" type="button">
+          @if (showPassword){
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+            </svg>
+        }@else{
+            <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M2 10c0-3.3 2.7-6 6-6s6 2.7 6 6c0 1.5-.6 2.9-1.6 3.9l3.8 3.8c.4.4.4 1 0 1.4-.4.4-1 .4-1.4 0l-3.8-3.8c-1 .9-2.4 1.6-3.9 1.6-3.3 0-6-2.7-6-6zm12.7 3l1.8 1.8c.4.4.4 1 0 1.4-.4.4-1 .4-1.4 0l-1.8-1.8c-1.3 1-2.8 1.7-4.4 2V17c0 .6-.4 1-1 1s-1-.4-1-1v-1.8c-1.6-.3-3.1-.9-4.4-2l-1.8 1.8c-.4.4-1 .4-1.4 0-.4-.4-.4-1 0-1.4l1.8-1.8C3.5 13.5 3 11.8 3 10c0-4.4 3.6-8 8-8s8 3.6 8 8c0 1.8-.6 3.5-1.7 4.9zM9 4c-3.3 0-6 2.7-6 6s2.7 6 6 6c1.8 0 3.5-.6 4.9-1.7L7.3 8.1c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l3.8 3.8c.9-1 1.6-2.4 1.6-3.9 0-3.3-2.7-6-6-6zm3.5 4.9l1.8 1.8c.4.4.4 1 0 1.4-.4.4-1 .4-1.4 0l-1.8-1.8c1-.9 2.4-1.6 3.9-1.6 3.3 0 6 2.7 6 6 0 1.5-.6 2.9-1.6 3.9l-3.8-3.8c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0z" clip-rule="evenodd" />
+            </svg>
+        }
+        </button>
+      </div>
+      <div class="flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" (click)="login()">Iniciar Sesión</button>
+      </div>
+    </form>
+  </div>

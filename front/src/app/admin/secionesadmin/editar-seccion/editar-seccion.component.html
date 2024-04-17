@@ -1,67 +1,101 @@
-<form [formGroup]="seccion" (ngSubmit)="editar_secion()">
-    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">First name</label>
-    <input formControlName="nombre"  autocomplete="off"type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="buscador"  />
-  <button>crear </button>
-  </form>
 
-<div>
-    <h1>libros sin asignar </h1>
-    <table>
-        <thead>
-            <tr>
-                <th>
-codigo
-                </th>
-                <th>
-                    aciones
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (item of libros_sin_asignar; track $index) {
-
-    <tr>
-        <td>{{item.codigo}}</td>
-        <td>
-            <button (click)="cambiarEstado_libros_agregados(item.id_libro)">
-              {{ estados[item.id_libro] || '+' }}
-            </button>
-          </td>
+<div class="grid grid-cols-3">
+    <div class="bg-green-300">
+        <h1>libros asignados a la seccion </h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+    codigo
+                    </th>
+                    <th>
+                        aciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of libros_asignados; track $index) {
     
-    </tr>
-            } 
-        </tbody>
-    </table>
-   
+        <tr>
+            <td>{{item.codigo}}</td>
+            <td>
+                @if (estados[item.id_libro] ==='+') {
+                    
+                    <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-2 rounded" (click)="cambiarEstado_libros_elimanados(item.id_libro)">
+                        <span class="inline-block w-6 h-6 text-center">{{ estados[item.id_libro] || '+' }}</span>
+                    </button>
+                }@else if (estados[item.id_libro] ==='-') {
+                    <button class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-2 rounded" (click)="cambiarEstado_libros_elimanados(item.id_libro)">
+                        <span class="inline-block w-6 h-6 text-center">{{ estados[item.id_libro] || '+' }}</span>
+                    </button>
+                }@else {
+                    <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-2 rounded" (click)="cambiarEstado_libros_elimanados(item.id_libro)">
+                        <span class="inline-block w-6 h-6 text-center">{{ estados[item.id_libro] || '+' }}</span>
+                      </button>
+                    
+                  }
+                  
+              </td>
+        
+        </tr>
+                } 
+            </tbody>
+        </table>
+       
+    </div>
+    <form [formGroup]="seccion" (ngSubmit)="editar_secion()">
+        <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">seccion</label>
+        <input formControlName="nombre"  autocomplete="off"type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="cambiar nombre a secion"  />
+      <button>crear </button>
+      </form>
+    <div class="bg-gray-500">
+        <h1>libros sin asignar </h1>
+
+        <p>buscar libro</p>
+        <input type="text" (keyup)="trear_Libros_sin_asignar(buscador)" [(ngModel)]="buscador" placeholder="buscar libro ">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+    codigo
+                    </th>
+                    <th>
+                        aciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of libros_sin_asignar; track $index) {
+    
+        <tr>
+            <td>{{item.codigo}}</td>
+            <td>
+              @if (estados[item.id_libro] ==='+') {
+
+                <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-2 rounded" (click)="cambiarEstado_libros_agregados(item.id_libro)">
+                    <span class="inline-block w-6 h-6 text-center">{{ estados[item.id_libro] || '+' }}</span>
+                  </button>
+              }@else if (estados[item.id_libro] ==='-') {
+                <button class="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-2 rounded" (click)="cambiarEstado_libros_agregados(item.id_libro)">
+                    <span class="inline-block w-6 h-6 text-center">{{ estados[item.id_libro] || '+' }}</span>
+                  </button>
+              }@else {
+                <button class="bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-2 rounded" (click)="cambiarEstado_libros_agregados(item.id_libro)">
+                    <span class="inline-block w-6 h-6 text-center">{{ estados[item.id_libro] || '+' }}</span>
+                  </button>
+              }
+              </td>
+        
+        </tr>
+                } 
+            </tbody>
+        </table>
+       
+    </div>
+    
 </div>
 
-<div>
-    <h1>libros asignados a la seccion </h1>
-    <table>
-        <thead>
-            <tr>
-                <th>
-codigo
-                </th>
-                <th>
-                    aciones
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (item of libros_asignados; track $index) {
+ 
 
-    <tr>
-        <td>{{item.codigo}}</td>
-        <td>
-            <button (click)="cambiarEstado_libros_elimanados(item.id_libro)">
-              {{ estados[item.id_libro] || '+' }}
-            </button>
-          </td>
-    
-    </tr>
-            } 
-        </tbody>
-    </table>
-   
-</div>
+
+

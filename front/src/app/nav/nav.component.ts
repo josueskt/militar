@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { AuthService } from '../auts/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,6 +8,19 @@ import { Component } from '@angular/core';
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
+  private auth = inject(AuthService)
+  user!:any  
+  ngOnInit(): void {
+    
+    this.user =   this.auth.getUserInfo()
+  }
+
+
+  
+  
+  
+  
+ 
 
 }
