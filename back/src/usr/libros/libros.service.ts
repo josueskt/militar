@@ -11,7 +11,10 @@ export class LibrosService {
         return this.sql.query(`select
     b.titulo ,
     b.year_of_publ ,
-    b.isbn,b.codigo,
+    b.isbn,
+    b.codigo,
+    b.tomo,
+    a.nombre as autor,
     c.nombre as categoria ,
     s.nombre as seccion,
     e.nombre as estante,
@@ -24,7 +27,9 @@ export class LibrosService {
     LEFT JOIN item.estante as e 
     ON S.fk_estante=E.id_estante
     left join item.type_book as t 
-    ON b.fk_type = t.id_type WHERE id_libro =$1`,[id])
+    ON b.fk_type = t.id_type
+    left join item.autor as a ON b.fk_autor = a.id
+    WHERE id_libro =$1`,[id])
 
     }
 

@@ -1,12 +1,12 @@
-<div class="flex justify-center items-center min-h-svh bg-blue-500   ">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<div class="flex justify-center items-center min-h-svh   todo">
+    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 ">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Credencial:</label>
-      <div class="mb-4">
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email" [(ngModel)]="username" required placeholder="Credencial">
+      <div class="mb-2">
+        <input class="shadow appearance-none border rounded  py-2  text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email" [(ngModel)]="username" required placeholder="Credencial">
       </div>
       <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password:</label>
       <div class="grid grid-cols-2">
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" [type]="showPassword ? 'text' : 'password'" id="password" name="password" [(ngModel)]="password" required>
+        <input class="shadow appearance-none border rounded w-full   text-gray-700 leading-tight focus:outline-none focus:shadow-outline" [type]="showPassword ? 'text' : 'password'" id="password" name="password" [(ngModel)]="password" required>
         <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center col-span-1 w-12" (click)="showHidePassword()" type="button">
           @if (showPassword){
             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -19,8 +19,17 @@
         }
         </button>
       </div>
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between mt-5">
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" (click)="login()">Iniciar Sesión</button>
       </div>
     </form>
   </div>
+
+  <style>
+    .todo{
+    background-image: url(https://img.freepik.com/fotos-premium/libros-biblioteca-ia-generativa_935506-104.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+  </style>

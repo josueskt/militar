@@ -1,22 +1,25 @@
-<div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+<div class="max-w-md mx-auto bg-orange-100 rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-20">
     <div class="md:flex">
-      <div class="md:flex-shrink-0">
-        <!-- <img class="h-48 w-full object-cover md:w-48" src="imagen_de_portada.jpg" alt="Imagen de Portada"> -->
-      </div>
-      <div class="p-8">
-        <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ libro.titulo }}</div>
-        <p class="mt-2 text-gray-500">{{ libro.year_of_publ }}</p>
-        <p class="mt-2 text-gray-500">{{ libro.isbn }}</p>
-        
-        <div class="mt-4">
-          <p class="text-gray-600">Ubicación:</p>
-          <ul class="mt-2 text-gray-500">
-            <li>Estante: {{ libro.estante }}</li>
-            <li>Sección: {{ libro.seccion }}</li>
-            <li>Código: {{ libro.codigo }}</li>
-          </ul>
+        <div class="md:flex-shrink-0 bg-indigo-500 text-white py-4 px-6 flex items-center justify-center">
+            <span class="text-4xl font-bold">{{ libro.tipo }}</span>
         </div>
-      </div>
+        <div class="p-8">
+            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ libro.titulo }}</div>
+            <p class="mt-2 text-gray-500">Autor: {{ libro.autor }}</p>
+            <p class="mt-2 text-gray-500">Año de Publicación: {{ libro.year_of_publ }}</p>
+            <p class="mt-2 text-gray-500">ISBN: {{ libro.isbn }}</p>
+           
+            <p class="mt-2 text-gray-500">Categoría: {{ libro.categoria }}</p>
+            <p class="mt-2 text-gray-500">Tomo: {{ libro.tomo }}</p>
+            
+            <div class="mt-4">
+                <p class="text-gray-600">Ubicación:</p>
+                <ul class="mt-2 text-gray-500">
+                    <li>Estante: {{ libro.estante }}</li>
+                    <li>Sección: {{ libro.seccion }}</li>
+                    <li>Código: {{ libro.codigo }}</li>
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
-  
+</div>

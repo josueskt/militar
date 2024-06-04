@@ -1,35 +1,32 @@
-<form [formGroup]="seccion" (ngSubmit)="crear()">
-    <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">First name</label>
-    <input formControlName="nombre"  autocomplete="off"type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="buscador"  />
-  <button>crear </button>
-  </form>
-<table>
+<form [formGroup]="seccion" (ngSubmit)="crear()" class="mb-8">
+    <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900">Nombre de la sección</label>
+    <input formControlName="nombre" autocomplete="off" type="text" id="nombre" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Nombre de la sección" />
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" type="submit">Crear</button>
+</form>
+
+<table class="w-full border-collapse border border-gray-300 mb-8">
     <thead>
-        <tr>
-            <th>nombre</th>
-            <th>
-                editar
-            </th>
-            <th>
-                eliminar
-            </th>
+        <tr class="bg-gray-200">
+            <th class="px-4 py-2">Nombre</th>
+            <th class="px-4 py-2">Editar</th>
+            <th class="px-4 py-2">Eliminar</th>
+            <th class="px-4 py-2">Generar QR</th>
         </tr>
     </thead>
     <tbody>
         @for (item of secciones; track $index) {
-            <tr>
-                <td>{{item.nombre}}</td>
-                <td><a href='admin/seccion/{{item.id_seccion}}'> editar</a></td>
-                <td><button (click)="elimiar(item.id_seccion)">eliminar</button></td>
-                <td>
-                    <button (click)="generateQRCode(item.id_seccion);">generar qr </button>
-                </td>
+            <tr class="{{ $index % 2 === 0 ? 'bg-gray-100' : 'bg-white' }}">
+                <td class="px-4 py-2">{{ item.nombre }}</td>
+                <td class="px-4 py-2"><a href='admin/seccion/{{ item.id_seccion }}' class="text-blue-500 hover:underline">Editar</a></td>
+                <td class="px-4 py-2"><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="elimiar(item.id_seccion)">Eliminar</button></td>
+                <td class="px-4 py-2"><button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" (click)="generateQRCode(item.id_seccion)">Generar QR</button></td>
             </tr>
         }
     </tbody>
 </table>
 
-
-@if(qrCodeUrl){<div >
-    <img width="400px" [src]="qrCodeUrl" alt="Código QR">
-  </div>}
+@if (qrCodeUrl){
+    <div class="mb-8">
+        <img class="mx-auto" width="200px" [src]="qrCodeUrl" alt="Código QR">
+    </div>
+}

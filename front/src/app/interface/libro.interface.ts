@@ -9,5 +9,7 @@ export interface libro {
     tipo:string
     titulo:string
     year_of_publ:string
+    autor:string
+    tomo:string
 
 }

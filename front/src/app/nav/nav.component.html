@@ -1,12 +1,12 @@
-<nav class="  bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-700  py-2 flex justify-between items-center ">
+<nav class="bg-beige-100 dark:bg-brown-900 border-b border-beige-200 dark:border-brown-700 py-2 flex justify-between items-center bg-white">
   <div class="flex justify-center items-center flex-grow">
-    <a href="/home" class="text-blue-700 dark:text-blue-500 mr-4">Home</a>
-    <a href="/estantes" class="text-blue-700 dark:text-blue-500 mr-4">estantes</a>
+    <a href="/home" class="text-brown-900 dark:text-beige-100 mr-4">Home</a>
+    <a href="/estantes" class="text-brown-900 dark:text-beige-100 mr-4">Estantes</a>
   </div>
-  <div class="flex items-center">
+  <div class="flex items-center flex-initial">
+    <!-- Aquí se asume que se usará algún mecanismo de servidor para verificar si el usuario está autenticado -->
     @if (user) {
-      <a href="/admin" class="text-gray-900 dark:text-white">administrar</a>
-
+      <a href="/admin" class="text-brown-900 dark:text-beige-100">Administrar</a>
     }
   </div>
 </nav>

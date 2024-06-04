@@ -1,59 +1,44 @@
-<div>
-    <h1> cargar libros desde exel </h1>
-    <input type="file" class="form-control" (change)="handleFileInput($event)" />
+<div class="p-4">
+    <h1 class="text-xl font-bold mb-4">Cargar libros desde Excel</h1>
+    <input type="file" class="border border-gray-300 rounded-lg p-2" (change)="handleFileInput($event)" />
 </div>
-<button class="btn btn-primary" (click)="procesarArchivo()" [disabled]="!archivoSeleccionado">Procesar Archivo</button>
-<hr>
+<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" (click)="procesarArchivo()" [disabled]="!archivoSeleccionado">Procesar Archivo</button>
+<hr class="my-4">
 
-<br>
-<input [(ngModel)]="buscar_l" (keyup)="buscar()" type="text" placeholder="buscar libro">
-<div>
-    <p>lista de libros </p>
-<table>
-    <thead>
-<tr>
-    <th>
-        titulo
-    </th>
-    <th>
-        codigo
-    </th><th>
-        eliminar
-    </th>
-    <th>
-        editar
-    </th>
-    <th>
-        historial
-    </th>
-</tr>
-    </thead>
-    <tbody>
-        @for (item of libros; track $index) {
-   <tr>
-    <td>
-        {{item.titulo}}
-    </td>
-    <td>
-        {{item.codigo}}
+<div class="p-4">
+    <input [(ngModel)]="buscar_l" (keyup)="buscar()" type="text" placeholder="Buscar libro" class="border border-gray-300 rounded-lg p-2 mb-4" />
+    <p class="mb-2">Lista de libros</p>
+    <table class="border border-gray-300">
+        <thead>
+            <tr>
+                <th class="border border-gray-300 px-4 py-2">Título</th>
+                <th class="border border-gray-300 px-4 py-2">Código</th>
+                <th class="border border-gray-300 px-4 py-2">Eliminar</th>
+                <th class="border border-gray-300 px-4 py-2">Editar</th>
+                <th class="border border-gray-300 px-4 py-2">Historial</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of libros; track $index) {
+                <tr>
+                    <td class="border border-gray-300 px-4 py-2">{{item.titulo}}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{item.codigo}}</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded" (click)="eliminar(item.id_libro)">Eliminar</button>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded">Editar</button>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        <a href='admin/historial/{{item.id_libro}}' class="text-blue-500 hover:underline">Ver historial de préstamo</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-    </td>
-    <td>
-        <button (click)="eliminar(item.id_libro)">eliminar</button>
-    </td>
-    <td>
-        <button> editar</button>
-    </td>
-    <td>
-        <a href='admin/historial/{{item.id_libro}}'>ver historial de prestamo</a>
-    </td>
-   
-        }
-
-    </tbody>
-</table>
-
-<button (click)="atras()">atras</button>
-<button (click)="siguiente()">siguiente</button>
-
+    <div class="flex justify-between mt-4">
+        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" (click)="atras()">Atrás</button>
+        <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded" (click)="siguiente()">Siguiente</button>
+    </div>
 </div>
