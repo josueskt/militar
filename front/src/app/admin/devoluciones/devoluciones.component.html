@@ -1,52 +1,49 @@
-
 <div>
     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
-    <input  (keypress)="buscar_prestamo($event)" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="buscar"  />
+    <input (keypress)="buscar_prestamo($event)" type="text" id="first_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="buscar" />
 </div>
 
-<table>
- <thead>
-    <th>
-        codigo libro
-    </th>
-<th>
-    titulo libro
-</th>
-<th>
-    nombre 
-</th>
-<th>
-    cedula
-</th>
-<th>
-    devolucion
-</th>
- </thead>
- <tbody>
-
- </tbody>
- @for (item of libros; track $index) {
- <tr class="rounded-sm border-amber-600 bg-gray-700 text-white">
-<td>
-    {{item.codigo}}
-</td>
-<td>
-    {{item.titulo}}
-</td>
-<td>
-    {{item.nombres}}
-</td>
-<td>
-    {{item.cedula}}
-</td>
-<td><button class="bg-red-400" (click)="openModal(item.id_prestamo,item.id_libro)">devolver</button></td>
-
- </tr>
-
-
+<table class="text-center">
+    @if (libros.length) {
+        <thead>
+            <th class="px-4 py-2">
+                código libro
+            </th>
+            <th class="px-4 py-2">
+                título libro
+            </th>
+            <th class="px-4 py-2">
+                nombre
+            </th>
+            <th class="px-4 py-2">
+                cédula
+            </th>
+            <th class="px-4 py-2">
+                devolución
+            </th>
+        </thead>
     }
+    
+    <tbody>
+        @for (item of libros; track $index) {
+        <tr class="rounded-sm border-amber-600 bg-gray-700 text-white">
+            <td class="px-4 py-2">
+                {{item.codigo}}
+            </td>
+            <td class="px-4 py-2">
+                {{item.titulo}}
+            </td>
+            <td class="px-4 py-2">
+                {{item.nombres}}
+            </td>
+            <td class="px-4 py-2">
+                {{item.cedula}}
+            </td>
+            <td class="px-4 py-2"><button class="bg-red-400 px-4 py-2" (click)="openModal(item.id_prestamo,item.id_libro)">devolver</button></td>
+        </tr>
+        }
+    </tbody>
 </table>
-
 
 @if(showModal){
 
@@ -94,5 +91,3 @@
 
   
 }
-
-

@@ -4,3 +4,15 @@ pendiente
 finalizado
 INSERT INTO tramites.estate (nombre) VALUES ('activo'),('pendiente'),('finalizado');
 insert into users.rol(nombre)values('biblioteca')
+
+http://localhost:3000/registro
+
+{"user" :{
+    "id_user":"123123",
+ "nombre":"josue bibliotecario ",
+    "fk_rol":1,
+    "password":"1234"
+}
+  
+  
+}

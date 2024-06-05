@@ -112,6 +112,7 @@ this.prestamo_S.prestamo({fk_libro:this.fk_libro_a_prestar,
 fk_cliente:this.cedula,}).subscribe({
   next:(e:any)=>{
     alert(e.message[0])
+    window.location.reload()
   },error:(e)=>{
     alert(e.message[0])
     

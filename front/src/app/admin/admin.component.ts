@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { AuthService } from '../auts/auth.service';
+import { NotificacionesService } from './notificaciones/notificaciones.service';
 
 @Component({
   selector: 'app-admin',
@@ -10,11 +11,21 @@ import { AuthService } from '../auts/auth.service';
 })
 export class AdminComponent implements OnInit {
   private auth = inject(AuthService)
-
+private notifi = inject(NotificacionesService)
 usuario:any
-  cerrar(){
-    this.auth.clearToken()
-  }
+  async cerrar() {
+  await this.notifi.traernotifi().subscribe((e) => {
+    if (!e.length) { 
+      this.auth.clearToken();
+      window.location.href = "./login";
+
+    } else {
+      alert('notificaciones pedientes')
+      window.location.href = "../admin/notificaciones";
+    }
+  });
+}
+
   ngOnInit(): void {
     
     this.usuario = this.auth.getUserInfo()

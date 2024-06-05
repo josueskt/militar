@@ -1,17 +1,17 @@
-@for (item of historial; track $index) {
-    
-    <div class="my-4 bg-slate-800 rounded-lg border border-gray-400 p-4">
-        <h2 class="text-xl font-semibold text-white">{{item.titulo}}</h2>
-        <div class="mt-2">
-            <p class="text-sm text-gray-300">Fecha de préstamo: {{item.fecha_prestamo}}</p>
-            <p class="text-sm text-gray-300">Nombre: {{item.nombres}}</p>
-            <p class="text-sm text-gray-300">Cédula: {{item.cedula}}</p>
-            <p class="text-sm text-gray-300">Teléfono: {{item.telefono}}</p>
-            <p class="text-sm text-gray-300">Observacion: {{item.observacion}}</p>
+@if(historial.length && historial[0].cedula != null){
 
+    @for (item of historial; track $index) {
+        
+        <div class="my-4 bg-white rounded-lg shadow-md border border-gray-300 p-4">
+            <h2 class="text-xl font-semibold text-gray-800">{{item.titulo}}</h2>
+            <div class="mt-2">
+                <p class="text-sm text-gray-600">Fecha de préstamo: {{item.fecha_prestamo}}</p>
+                <p class="text-sm text-gray-600">Nombre: {{item.nombres}}</p>
+                <p class="text-sm text-gray-600">Cédula: {{item.cedula}}</p>
+                <p class="text-sm text-gray-600">Teléfono: {{item.telefono}}</p>
+                <p class="text-sm text-gray-600">Observación: {{item.observacion}}</p>
+            </div>
         </div>
-    </div>
-    
-    
-
+        
+    }
 }

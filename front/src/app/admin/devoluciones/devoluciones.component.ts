@@ -32,8 +32,8 @@ devolver(){
 
   this.devolucion_s.devolver_prestamo(this.devolucion).subscribe({
     next:(r:any)=>{
-      console.log(r)
       alert(r.message[0])
+      window.location.reload()
     },
     error:(e)=>{
       console.log(e)

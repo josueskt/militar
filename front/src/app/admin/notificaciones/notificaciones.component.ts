@@ -27,6 +27,7 @@ eliminar(id:string){
 
   this.notificacion_S.eliminar_notifi(id).subscribe((e:any)=>{
     alert(e.message[0])
+    window.location.reload()
   })
 }
 

@@ -88,7 +88,7 @@ cambiarEstado_libros_elimanados(id: string) {
 
 
 editar_secion(){
-  this.seccion_s.editar(this.id,this.libros_agregados,this.libros_eliminados,this.seccion.value).subscribe((e:any)=>{alert(e.message[0])})
+  this.seccion_s.editar(this.id,this.libros_agregados,this.libros_eliminados,this.seccion.value).subscribe((e:any)=>{alert(e.message[0]); window.location.reload()})
 
 }
 

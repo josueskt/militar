@@ -6,7 +6,7 @@
       </div>
       <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password:</label>
       <div class="grid grid-cols-2">
-        <input class="shadow appearance-none border rounded w-full   text-gray-700 leading-tight focus:outline-none focus:shadow-outline" [type]="showPassword ? 'text' : 'password'" id="password" name="password" [(ngModel)]="password" required>
+        <input class="shadow appearance-none border rounded w-full   text-gray-700 leading-tight focus:outline-none focus:shadow-outline" [type]="showPassword ? 'text' : 'password'" id="password" name="password" (keyup.enter)="login()" [(ngModel)]="password" required>
         <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center col-span-1 w-12" (click)="showHidePassword()" type="button">
           @if (showPassword){
             <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -20,7 +20,7 @@
         </button>
       </div>
       <div class="flex items-center justify-between mt-5">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" (click)="login()">Iniciar Sesión</button>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" (keyup.enter)="login()" (click)="login()">Iniciar Sesión</button>
       </div>
     </form>
   </div>
